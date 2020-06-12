@@ -28,7 +28,7 @@ function time_diffs(df, det)
     times = @where(df, :det .== det)[!, [:s, :ns]] |> Matrix
     # Subtract adjacent rows
     deltas = times[2:end, :] - times[1:end-1, :]
-    # Convert from (s, ns) to (ns)
+    # Convert from (d_s, d_ns) to (d_ns)
     1_000_000_000 * deltas[:, 1] + deltas[:, 2]
 end
 

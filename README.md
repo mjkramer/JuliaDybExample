@@ -3,8 +3,8 @@
 ## Set up
 
 Note: These steps are intended to be run on Cori at NERSC. Other systems and
-platforms should work, but you'll need to change, e.g., the value of DATAFILE in
-TrigTimeSep.jl to point to a valid Daya Bay reconstructed data file. When
+platforms should work, but you'll need to change, e.g., the value of `DATA_FILE`
+in TrigTimeSep.jl to point to a valid Daya Bay reconstructed data file. When
 possible I'll point out special considerations for Mac/Windows.
 
 ### Installing Julia
@@ -22,28 +22,31 @@ rm julia-1.4.2-linux-x86_64.tar.gz
 ```
 
 Now Julia can be started by typing out the full path to the executable, e.g.,
-`~/julia-1.4.2/bin/julia`. However, it would be more convenient to just type
-`julia`. You could add `~/julia-1.4.2/bin` to your PATH, but let's kill two
-birds with one stone and use a different solution. Run the following, and put it
-in your `~/.bashrc.ext` (or its equivalent) to make it persist:
+`~/julia-1.4.2/bin/julia`. However, it would be more convenient if you could
+just type `julia`. Toward that end, you could add `~/julia-1.4.2/bin` to your
+PATH, but let's kill two birds with one stone and use a different solution. Run
+the following, and put it in your `~/.bashrc.ext` (or its equivalent) to make it
+persist:
 
 ```bash
 alias julia="PYTHON= ~/julia-1.4.2/bin/julia"
 ```
 
-Setting the PYTHON environment variable to the empty string tells Julia *not* to
-use the system's Python + packages, but to manage its own (using `conda`). This
-means that you don't have to worry about installing any needed Python packages
-(like `UpROOT`), as Julia will do it for you. This is the default on Mac and
-Windows, but not on Linux, where we must force it in this way. If you already
-have a well-oiled Python 3 environment, you can use it by leaving $PYTHON alone;
-just be sure to install UpROOT with pip or conda.
+On Linux, setting the `PYTHON` environment variable to the empty string tells
+Julia *not* to use the system's Python + packages, but to manage its own (using
+Conda). This means that you don't have to worry about installing any needed
+Python packages (like `UpROOT`), as Julia will do it for you. This convenience
+is the default on Mac and Windows, but not on Linux, where we must force it
+using this trick. If you already have a well-oiled Python 3 environment, you can
+use it by leaving `PYTHON` alone; just be sure to install UpROOT with pip or
+conda.
 
-## Running the example
+## Running the example (plotting AD trigger time differences)
 
 In your terminal, navigate to this directory, and start up Julia. To "activate"
 this project, go to the package manager by pressing the `]` key, enter `activate .`
-and then exit the package manager by pressing backspace. [^1] Then load the analysis
+and then exit the package manager by pressing backspace. (Protip: To skip the
+`activate` dance, start Julia like `julia --project=.`.) Then load the analysis
 by running `include("TrigTimeSep.jl")`, and finally, run `example_plot()`.
 
 ## Making your own project
@@ -56,6 +59,3 @@ desired packages by doing, e.g., `add UpROOT`. You will now have a
 package you added along with those of all their dependencies. If you delete
 `Manifest.toml`, the latest versions of all packages will be installed the next
 time you activate the project (I think).
-
-[^1]: Protip: To avoid having to do `]activate .`, start Julia like `julia
-    --project=.`.
