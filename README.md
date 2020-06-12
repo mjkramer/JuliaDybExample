@@ -56,6 +56,4 @@ prompt, create/activate the empty project with `activate .`, then add any
 desired packages by doing, e.g., `add UpROOT`. You will now have a
 `Project.toml` file, containing a list of the packages you added, and a
 `Manifest.toml` file, listing (for reproducibility) the exact versions of every
-package you added along with those of all their dependencies. If you delete
-`Manifest.toml`, the latest versions of all packages will be installed the next
-time you activate the project (I think).
+package you added along with those of all their dependencies.
