@@ -43,7 +43,7 @@ just be sure to install UpROOT with pip or conda.
 
 In your terminal, navigate to this directory, and start up Julia. To "activate"
 this project, go to the package manager by pressing the `]` key, enter `activate .`
-and then exit the package manager by pressing backspace. Then load the analysis
+and then exit the package manager by pressing backspace. [^1] Then load the analysis
 by running `include("TrigTimeSep.jl")`, and finally, run `example_plot()`.
 
 ## Making your own project
@@ -56,3 +56,6 @@ desired packages by doing, e.g., `add UpROOT`. You will now have a
 package you added along with those of all their dependencies. If you delete
 `Manifest.toml`, the latest versions of all packages will be installed the next
 time you activate the project (I think).
+
+[^1]: Protip: To avoid having to do `]activate .`, start Julia like `julia
+    --project=.`.
